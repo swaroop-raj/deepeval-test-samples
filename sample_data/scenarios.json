@@ -1,0 +1,134 @@
+{
+    "scenarios": [
+        {
+            "id": "policy-inquiry-001",
+            "name": "Claim Filing Deadline Inquiry",
+            "scenario": "User had a car accident and asks about claim filing deadlines, required documentation, and follow-up procedures",
+            "expected_outcome": "Agent provides accurate 30-day filing deadline, lists required documents (police report, photos, repair estimate), references policy section 4.2, and explains the claims review timeline of 5-7 business days",
+            "chatbot_role": "Insurance customer service AI agent for AutoShield Insurance",
+            "turns": [
+                {
+                    "role": "user",
+                    "content": "Hi, I was in a car accident last Tuesday. What's the deadline to file a claim?"
+                },
+                {
+                    "role": "assistant",
+                    "content": "I'm sorry to hear about your accident. I hope you're okay. Under your AutoShield policy, you have 30 calendar days from the date of the incident to file a claim. Since your accident was last Tuesday, you'd want to submit your claim by the corresponding Tuesday four weeks from now. Would you like me to walk you through what you'll need to file?",
+                    "retrieval_context": [
+                        "Policy Section 4.2 - Claims Filing: All claims must be submitted within 30 calendar days of the incident date. Claims submitted after this period may be subject to denial unless the policyholder can demonstrate extenuating circumstances (hospitalization, natural disaster, etc.).",
+                        "Policy Section 4.3 - Required Documentation: Police report (if applicable), photographic evidence of damage, repair cost estimate from certified mechanic, completed Claim Form CF-101."
+                    ]
+                },
+                {
+                    "role": "user",
+                    "content": "Yes please. What documents do I need?"
+                },
+                {
+                    "role": "assistant",
+                    "content": "Here's what you'll need to file your claim:\n\n1. **Police report** (if one was filed at the scene)\n2. **Photos of the damage** to all vehicles involved\n3. **Repair cost estimate** from a certified mechanic or body shop\n4. **Completed Claim Form CF-101** (I can email this to you or you can download it from your account portal)\n\nOnce submitted, our claims team reviews everything within 5-7 business days. You'll get a decision notification by email and in your app. Do you need help with any of these steps?",
+                    "retrieval_context": [
+                        "Policy Section 4.3 - Required Documentation: Police report (if applicable), photographic evidence of damage, repair cost estimate from certified mechanic, completed Claim Form CF-101.",
+                        "Internal SOP: Claims review timeline is 5-7 business days from complete submission. Notification sent via email and mobile app."
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "complaint-resolution-001",
+            "name": "Billing Overcharge Complaint",
+            "scenario": "User is frustrated about being charged twice for their monthly premium and wants an immediate refund. They are increasingly agitated.",
+            "expected_outcome": "Agent acknowledges frustration with empathy, confirms the duplicate charge exists, offers immediate refund within 3-5 business days, provides a case reference number, and offers additional goodwill (waived late fee on next cycle)",
+            "chatbot_role": "Insurance customer service AI agent for AutoShield Insurance",
+            "turns": [
+                {
+                    "role": "user",
+                    "content": "I just checked my bank statement and you charged me TWICE this month! $247 taken out twice. This is ridiculous!"
+                },
+                {
+                    "role": "assistant",
+                    "content": "I completely understand your frustration, and I'm sorry this happened. Being charged twice is not acceptable, and I want to get this resolved for you right away. Let me pull up your account to verify the duplicate charge. Could you confirm the last four digits of the account number or your policy number so I can look into this immediately?",
+                    "retrieval_context": [
+                        "Customer Service Protocol: For billing complaints, always acknowledge the emotional impact first. Verify the issue before promising resolution. Use empathetic language without being dismissive."
+                    ]
+                },
+                {
+                    "role": "user",
+                    "content": "Policy number is ASH-4421-7788. And this better get fixed today, I can't afford to have $494 missing from my account!"
+                },
+                {
+                    "role": "assistant",
+                    "content": "I've located your account, and I can confirm there was indeed a duplicate charge of $247 processed on August 20th. This was a system error on our end, and I sincerely apologize for the inconvenience.\n\nHere's what I'm doing right now:\n- **Initiating a refund of $247** back to your bank account\n- Refund will appear within **3-5 business days**\n- Your case reference number is **REF-2026-08271**\n\nI understand this put a strain on your finances, and I appreciate your patience while we resolve it.",
+                    "retrieval_context": [
+                        "Billing System: Account ASH-4421-7788 shows two charges of $247.00 on 2026-08-20. First charge: regular monthly premium. Second charge: duplicate processing error (batch job BJ-4401).",
+                        "Refund Policy: Duplicate charges eligible for immediate refund initiation. Processing time: 3-5 business days. Agent authorized to initiate without supervisor approval for amounts under $500."
+                    ]
+                },
+                {
+                    "role": "user",
+                    "content": "3-5 business days?? That's almost a week without my money that YOU took by mistake!"
+                },
+                {
+                    "role": "assistant",
+                    "content": "You're absolutely right to be upset about the timeline. Unfortunately, 3-5 business days is the bank processing window that's outside our direct control. However, here's what I can do additionally:\n\n- I've flagged your refund as **priority processing**, which often resolves in 2-3 days\n- As a goodwill gesture, I'm **waiving any late fees** on your next billing cycle in case this disruption causes any cascading issues\n- If the refund hasn't appeared by next Wednesday, call us back with reference **REF-2026-08271** and we'll escalate directly to our payments team\n\nIs there anything else I can help you with today?",
+                    "retrieval_context": [
+                        "Escalation Protocol: When customer expresses dissatisfaction with standard timelines, agents may: (1) flag refund as priority, (2) offer goodwill credit or fee waiver, (3) provide direct escalation path. Do not promise faster than 2-3 days as this depends on banking partner."
+                    ]
+                },
+                {
+                    "role": "user",
+                    "content": "Fine. I appreciate you taking care of it. Just make sure it doesn't happen again."
+                },
+                {
+                    "role": "assistant",
+                    "content": "I've made a note on your account to prevent this from recurring. Our billing team will also be reviewing the batch process that caused this error. Thank you for your patience, and again, I'm sorry for the hassle. If you notice anything else unusual, don't hesitate to reach out. Your reference number **REF-2026-08271** will stay active for 30 days. Have a good rest of your day.",
+                    "retrieval_context": [
+                        "Account Notes: Flag added to ASH-4421-7788 for billing monitoring. Duplicate charge root cause: batch job BJ-4401 to be investigated by payments engineering team."
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "account-service-001",
+            "name": "Address Change Request",
+            "scenario": "User needs to update their mailing address due to a recent move. This change affects policy premium calculation since the new location has different risk factors.",
+            "expected_outcome": "Agent verifies customer identity (DOB + policy number), confirms current address on file, processes the new address, informs about potential premium adjustment, provides confirmation number, and summarizes all changes made",
+            "chatbot_role": "Insurance customer service AI agent for AutoShield Insurance",
+            "turns": [
+                {
+                    "role": "user",
+                    "content": "I just moved to a new apartment and need to update my address on my policy."
+                },
+                {
+                    "role": "assistant",
+                    "content": "I'd be happy to help you update your address. For security purposes, I'll need to verify your identity first. Could you please provide me with:\n\n1. Your policy number\n2. Your date of birth\n\nOnce verified, I can make the change right away.",
+                    "retrieval_context": [
+                        "Security Protocol: All account modifications require identity verification. Minimum: policy number + date of birth. For financial changes: add last 4 of SSN."
+                    ]
+                },
+                {
+                    "role": "user",
+                    "content": "Sure. Policy is ASH-5567-3301 and my DOB is March 15, 1989."
+                },
+                {
+                    "role": "assistant",
+                    "content": "Thank you. I've verified your identity successfully.\n\nYour current address on file is: **742 Oak Street, Apt 3B, Springfield, IL 62701**\n\nWhat's your new address?",
+                    "retrieval_context": [
+                        "Account ASH-5567-3301: Verified - DOB matches (1989-03-15). Current address: 742 Oak Street, Apt 3B, Springfield, IL 62701. Policy type: Auto + Renters bundle."
+                    ]
+                },
+                {
+                    "role": "user",
+                    "content": "New address is 1205 Maple Avenue, Unit 12A, Chicago, IL 60614."
+                },
+                {
+                    "role": "assistant",
+                    "content": "I've updated your address to:\n\n**1205 Maple Avenue, Unit 12A, Chicago, IL 60614**\n\nImportant note: Since you've moved from Springfield to Chicago, there may be a **premium adjustment** on your next billing cycle due to different risk factors in your new area (urban density, theft rates, etc.). You'll receive an updated premium notice within 5 business days with any changes.\n\nHere's your confirmation:\n- **Confirmation #**: ADDR-2026-08274\n- **Change effective**: Immediately\n- **Documents updated**: Auto policy + Renters policy\n\nTo summarize: I've updated your mailing and policy address from 742 Oak Street, Springfield to 1205 Maple Avenue, Chicago on both your auto and renters policies. Is there anything else I can help with?",
+                    "retrieval_context": [
+                        "Address Change Protocol: Update all linked policies. Flag for premium recalculation if ZIP code changes. Chicago (60614) risk tier: Urban-High (vs Springfield 62701: Suburban-Medium). Premium adjustment notice sent within 5 business days.",
+                        "Account ASH-5567-3301: Address updated. Confirmation ADDR-2026-08274 generated. Policies affected: AUTO-5567-A, RENT-5567-R."
+                    ]
+                }
+            ]
+        }
+    ]
+}
